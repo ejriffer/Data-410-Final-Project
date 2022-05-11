@@ -377,6 +377,8 @@ The accuracy for the above model was 0.5262, and the confusion matrix is shown b
 
 Of the four models logistic regression had the highest accuracy on the test data at 0.5900. However, looking at the confusion matrix we see this is because it predicted all losses. This might be because the averaged values over 5 games are lower than a lot of the data the model saw in the train set, and now does not see any values that are close to what the model would predict as a win. I think there are ways to improve upon this model, including trying different penalties, or adding a constant\intercept to the model. 
 
-The model with the next highest accuracy on the test data was random forest classifier at 0.5434. While this is a decrease from the train data (accuracy 0.8027) it is above 0.5000 which shows that the model is utilizing the input variables to predict at a higher rate than randomly guessing. The decision tree classifier was just behind random forest at 0.5406, K-nearest neighbors operated at a 0.5262, both above the 0.5000 threshold.
+The model with the next highest accuracy on the test data was random forest classifier at 0.5434. While this is a decrease from the train data (accuracy 0.8027) it is above 0.5000 which shows that the model is utilizing the input variables to predict at a higher rate than randomly guessing. In order to improve this model you could look at hyperparameters such as max_depth or min_samples_split. 
+
+The decision tree classifier was just behind random forest at 0.5406, K-nearest neighbors operated at a 0.5262, both above the 0.5000 threshold.
 
 ## References
