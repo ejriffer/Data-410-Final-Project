@@ -378,7 +378,7 @@ The accuracy for the above model was 0.5262, and the confusion matrix is shown b
 
 ## Discussion and Inferences
 
-Of the four models logistic regression had the highest accuracy on the test data at 0.5900. However, looking at the confusion matrix we see this is because it predicted all losses. This might be because the averaged values over 5 games are lower than a lot of the data the model saw in the train set, and now does not see any values that are close to what the model would predict as a win. I think there are ways to improve upon this model, including trying different penalties, or adding a constant\intercept to the model. 
+Of the four models logistic regression had the highest accuracy on the test data at 0.5900. However, looking at the confusion matrix we see this is because it predicted all losses. This might be because the averaged values over 5 games are lower than a lot of the data the model saw in the train set, and now does not see any values that are close to what the model would predict as a win. I think there are ways to improve upon this model, including trying different penalties (such as L1 or Elastic Net), or adding a constant/intercept to the model. 
 
 The model with the next highest accuracy on the test data was random forest classifier at 0.5434. While this is a decrease from the train data (accuracy 0.8027) it is above 0.5000 which shows that the model is utilizing the input variables to predict at a higher rate than randomly guessing. In order to improve this model you could look at hyperparameters such as max_depth or min_samples_split. 
 
@@ -386,11 +386,11 @@ The decision tree classifier was just behind random forest at 0.5406, and is  ab
 
 K-nearest neighbors operated at a 0.5262, the lowest of the models but also above the 0.5000 threshold. This model could be improved by running the model with different *k* values to try and optimize the model. Investigating the different weights with the different *k* values could also be used to improve the model.
 
-Other ways to improve upon these models would be to add more *X* variables. The statisticals values used in these models are very basic but there are a number of additional variables that go into a team's win. Categories such as hits, blocks, face-off percentage, zone entries, takeaways, giveaways, etc. could improve a model's understanding of a team, and therefore their odds to win any given game. 
+Other ways to improve upon these models would be to add more *X* variables. The statisticals values used in these models are very basic but there are a number of additional variables that go into a team's win. Categories such as hits, blocks, face-off win percentage, takeaways, giveaways, etc. could improve a model's understanding of a team, and therefore their odds to win any given game. 
 
-In the context of the goals of this project, having a model above 0.5000 in accuracy mean that betting on every game would return more money than you lose. Using this model to bet would also require knowledge of how sports betting worked, because some of the predicted winners the model picks are probably also favorites in various sports betting companies. So, implimenting this model it would probably be most beneficial, from a financial standpoint, to wait until the model predicts a winner that is not favored in Vegas.
+In the context of the goals of this project, having a model above 0.5000 in accuracy mean that betting on every game would return more money than you lose. Using this model to bet would also require knowledge of how sports betting worked, because some of the predicted winners the model picks are probably also favorites in various sports betting companies. So, implimenting this model it would probably be most beneficial, from a financial standpoint, to wait until the model predicts a winner that is not favored in Vegas and betting on them. 
 
-If someone wanted to research further into NHL statistics they could try and create some sort of wins above replacement (WAR)/value over replacement player (VORP) variable. These variables are more common in other sports such as baseball or basketball and measure how much more value a player adds to their team at their position than a slighly below avergae (or 'replacement') player would in their place. While this statistic has been attempted for NHL players there is still not one gererally accepted formula or variable. If one were to create this variable it could be added to this model to help predict team wins, and could also be used for other individual player bets or fantasy leagues.
+If someone wanted to research further into NHL statistics they could try and create some sort of wins above replacement (WAR)/value over replacement player (VORP) variable. These variables are more common in other sports such as baseball or basketball and measure how much more value a player adds to their team at their position than a slighly below avergae (or 'replacement') player would in their place. While this statistic has been attempted for NHL players there is still not one gererally accepted formula or variable. If one were to create this variable it could be added to this model to help predict team wins, and could also be used for other bets on individual player or in fantasy leagues.
 
 ## References
 
@@ -403,4 +403,3 @@ Thanda, A. (2021, December 16). What is logistic regression? A beginner's guide 
 Uberoi, A. (2022, March 10). K-nearest neighbours. GeeksforGeeks. Retrieved May 11, 2022, from https://www.geeksforgeeks.org/k-nearest-neighbours/ 
 
 Vadapalli, P. (2022, April 18). Random forest classifier: Overview, how does it work, pros &amp; cons. upGrad blog. Retrieved May 11, 2022, from https://www.upgrad.com/blog/random-forest-classifier/ 
-
