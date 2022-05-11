@@ -210,11 +210,17 @@ ytest = ytest['win']
 
 ### Classification Methods 
 
-Consider expanding this section with a lot of details from concepts and theories.
+For this project I chose to use four classification models to see if one performed better than the others. The models I chose were Logistic Regression, Decision Tree, Random Forest, and K-Nearest Neighbors. 
 
-Feel free to add a lot of details.
+**Logistic Regression**
 
-### The actual application of the methods and the validation procedure
+**Decision Tree Classifier**
+
+**Random Forest Classifier**
+
+**K-Nearest Neighbors Classifier**
+
+### Application and Validation
 
 Here you can include flow chart diagrams and describe your coding approach.
 
