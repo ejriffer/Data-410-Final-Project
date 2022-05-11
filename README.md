@@ -214,11 +214,21 @@ For this project I chose to use four classification models to see if one perform
 
 **Logistic Regression**
 
+Logistic regression is a classification algorithm that determines the probability of one event out of two options. It is a linear regression model but the final output of the model is transformed by a logistic/sigmoid function which maps the output variable between 0 and 1. 
+
+These values are the probability of each input variable belonging to one or the other group. For this project I used hard classifications, or assigning the variable to the group (either 0/loss or 1/win) that it sayd it is more likely to be in. 
+
 **Decision Tree Classifier**
+
+Decision tree classifiers use decision trees to split the data into different nodes. The goal of this split is to group all of the data with others of it's same group. This splitting criteria is based on gini impurity which is defined as:![CodeCogsEqn-14](https://user-images.githubusercontent.com/74326062/167920906-48dbf239-61fc-4016-98d0-a1c3d95f6451.svg). The goal is to minimize the gini impurity. 
 
 **Random Forest Classifier**
 
+Random forest classifier is an ensemble model, made up of many decision trees. The prediction from a random forest is found by taking the average from every tree in the forest. To make sure each tree is not exactly identical new data will be boostraped, or randomly generated in a way that is still very similar to the original set. 
+
 **K-Nearest Neighbors Classifier**
+
+K-nearest neighbors classifiers assigns the input to whatever group the majority of it's *k* nearest neighbors are in. The variable *k* defaults at 5 but can any number the user chooses. 
 
 ### Application and Validation
 
