@@ -158,6 +158,41 @@ for i, team in zip(range(0,2461,82),team_abb):
   d[team] = d[team].reset_index(drop = True)
 ```
 
+The next step is to use these dataframes to create the *Xtest* dataframe. I used a shifting subset of the data to grab five rows shifting down one row in each iteration. The rest of the code is the same as for *Xtrain* above. The below code was used to create *Xtrain*.
+
+```
+Xlist = []
+for team in team_abb:
+    for i,j in zip(range(0,169),range(5,169)):
+        temp = d[team].iloc[i:j].reset_index(drop = True)
+        X = pd.DataFrame()
+        for index, row in temp.iterrows():
+            if temp['boxscore_index'].iloc[index][-3:] == team:
+                tempX = temp[['home_assists','home_even_strength_assists','home_even_strength_goals','home_goals',
+                          'home_penalties_in_minutes','home_points','home_power_play_assists','home_power_play_goals',
+                          'home_save_percentage', 'home_saves', 'home_shooting_percentage','home_short_handed_assists',
+                          'home_short_handed_goals','home_shots_on_goal']]
+            else:
+                tempX = temp[['away_assists','away_even_strength_assists','away_even_strength_goals','away_goals',
+                          'away_penalties_in_minutes','away_points','away_power_play_assists','away_power_play_goals',
+                          'away_save_percentage', 'away_saves', 'away_shooting_percentage','away_short_handed_assists',
+                          'away_short_handed_goals','away_shots_on_goal']]
+            tempX.columns = ['assists','even_strength_assists','even_strength_goals','goals',
+                          'penalties_in_minutes','points','power_play_assists','power_play_goals',
+                          'save_percentage', 'saves', 'shooting_percentage','short_handed_assists',
+                          'short_handed_goals','shots_on_goal']
+        Xlisttemp = []
+        for i in tempX.columns:
+            Xlisttemp.append(tempX[i].mean())
+        Xlist.append(Xlisttemp)
+
+Xtest = pd.DataFrame(Xlist, columns = ['assists','even_strength_assists','even_strength_goals','goals',
+                          'penalties_in_minutes','points','power_play_assists','power_play_goals',
+                          'save_percentage', 'saves', 'shooting_percentage','short_handed_assists',
+                          'short_handed_goals','shots_on_goal'])
+```
+
+
 ### Classification Methods 
 
 Consider expanding this section with a lot of details from concepts and theories.
