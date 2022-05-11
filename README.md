@@ -101,11 +101,39 @@ I then saved each output table to be able to call them in the future. Each outpu
 **shots_on_goal**: the number of shots on goal the team registered
 
 
-## Description of all the methods applied
+## Methods
 
-### Pre-processing methods
+### Pre-Processing Methods
 
-### The analytical/machine learning methods 
+Now that I had my five data frames I created my *X* data frame and corresponding *y* variable to use in my classification models. As stated before I wanted to use the 2014-15, 2015-16, and 2016-17 seasons to train my model and  the 2017-18 and 2018-19 seasons to test it. 
+
+The below code was used to create the *Xtrain* data.
+
+```
+Xtrain = pd.DataFrame()
+for boxscore in [boxscores15, boxscores16, boxscores17]:
+    for i, team in zip(range(0,2461,82),team_abb):
+        temp = boxscore[i:i+82].reset_index()
+        for index, row in temp.iterrows():
+            if temp['boxscore_index'].iloc[index][-3:] == team:
+                tempX = temp[['home_assists','home_even_strength_assists','home_even_strength_goals','home_goals',
+                          'home_penalties_in_minutes','home_points','home_power_play_assists','home_power_play_goals',
+                          'home_save_percentage', 'home_saves', 'home_shooting_percentage','home_short_handed_assists',
+                          'home_short_handed_goals','home_shots_on_goal']]
+            else:
+                tempX = temp[['away_assists','away_even_strength_assists','away_even_strength_goals','away_goals',
+                          'away_penalties_in_minutes','away_points','away_power_play_assists','away_power_play_goals',
+                          'away_save_percentage', 'away_saves', 'away_shooting_percentage','away_short_handed_assists',
+                          'away_short_handed_goals','away_shots_on_goal']]
+        tempX.columns = ['assists','even_strength_assists','even_strength_goals','goals',
+                          'penalties_in_minutes','points','power_play_assists','power_play_goals',
+                          'save_percentage', 'saves', 'shooting_percentage','short_handed_assists',
+                          'short_handed_goals','shots_on_goal']
+        Xtrain = Xtrain.append(tempX)
+Xtrain = Xtrain.reset_index(drop = True)
+```
+
+### Classification Methods 
 
 Consider expanding this section with a lot of details from concepts and theories.
 
