@@ -222,9 +222,71 @@ For this project I chose to use four classification models to see if one perform
 
 ### Application and Validation
 
-Here you can include flow chart diagrams and describe your coding approach.
+Before running my data through the classifiers I standardized the *X* data so all of the values were on the same scale and no one variable dominated the model. I also turned my *y* data into a numpy array of integers so the models could classify the games as wins and losses properly. The below code shows this for the train and test data.
 
-Suggestion: make sure you have anough computing power.  (Consider Colab Pro)
+```
+scaler = StandardScaler()
+Xtrainscaled = scaler.fit_transform(Xtrain)
+ytrain = np.array(ytrain)
+ytrain = ytrain.astype('int')
+
+scaler = StandardScaler()
+Xtestscaled = scaler.fit_transform(Xtest)
+ytest = np.array(ytest)
+ytest = ytest.astype('int')
+```
+
+The validation techniques that I chose to use were accuracy scores and a confusion matrix. The accuracy score shows the what percentage of the data was accurately classified as a win or a loss and the confusion matrix shows the number of data point EXPAND HERE
+
+**Train Data*
+
+
+
+**Test Data*
+
+The first classifier model I ran was a logistic regression. The below code shows this implementation. 
+
+```
+log_reg = LR()
+log_reg.fit(Xtrainscaled, ytrain)
+predicted_log = log_reg.predict(Xtestscaled)
+cm_df_log_reg = pd.DataFrame(data = cm(ytest, predicted_log), columns = ['lose', 'win'], index = ['lose','win'])
+print(accuracy_score(ytest, predicted_log))
+cm_df_log_reg
+```
+
+The next classifier model I ran was a decision tree. The below code shows this implementation. 
+
+```
+dtc = DTC(random_state = 1693)
+dtc.fit(Xtrainscaled, ytrain)
+predicted_dtr = dtc.predict(Xtestscaled)
+cm_df_dtr = pd.DataFrame(data = cm(ytest, predicted_dtr), columns = ['lose', 'win'], index = ['lose','win'])
+print(accuracy_score(ytest, predicted_dtr))
+cm_df_dtr
+```
+
+The next classifier model I ran was a random forest. The below code shows this implementation. 
+
+```
+rfc = RFC(random_state = 1693)
+rfc.fit(Xtrainscaled, ytrain)
+predicted_rfc = rfc.predict(Xtestscaled)
+cm_df_rfc = pd.DataFrame(data = cm(ytest, predicted_rfc), columns = ['lose', 'win'], index = ['lose','win'])
+print(accuracy_score(ytest, predicted_rfc))
+cm_df_rfc
+```
+
+The next classifier model I ran was a k-nearest neighbors. The below code shows this implementation. 
+
+```
+knn = KNeighborsClassifier()
+knn.fit(Xtrainscaled, ytrain)
+predicted_knn = knn.predict(Xtestscaled)
+cm_df_knn = pd.DataFrame(data = cm(ytest, predicted_knn), columns = ['lose', 'win'], index = ['lose','win'])
+print(accuracy_score(ytest, predicted_knn))
+cm_df_knn
+```
 
 ## Discussion and inferences
 
