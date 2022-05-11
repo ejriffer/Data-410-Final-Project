@@ -379,6 +379,8 @@ Of the four models logistic regression had the highest accuracy on the test data
 
 The model with the next highest accuracy on the test data was random forest classifier at 0.5434. While this is a decrease from the train data (accuracy 0.8027) it is above 0.5000 which shows that the model is utilizing the input variables to predict at a higher rate than randomly guessing. In order to improve this model you could look at hyperparameters such as max_depth or min_samples_split. 
 
-The decision tree classifier was just behind random forest at 0.5406, K-nearest neighbors operated at a 0.5262, both above the 0.5000 threshold.
+The decision tree classifier was just behind random forest at 0.5406, and is  above the 0.5000 threshold. The decision tree model has similar hyperparameters to random forest, and max_depth and min_samples_split could also be used to try and improve this model. 
+
+K-nearest neighbors operated at a 0.5262, the lowest of the models but also above the 0.5000 threshold. This model could be improved by running the model with different *k* values to try and optimize the model. Investigating the different weights with the different *k* values could also be used to improve the model.
 
 ## References
