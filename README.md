@@ -1,11 +1,6 @@
-# Data-410-Final-Project
+# Modeling the NHL: Using KPIs to Predict the Outcome of Games
 
-
-# Good Name - Project
-
-It's important not to loose focus - think about the big message you try to support. 
-
-For example: data journalism or activism is a big thing.
+With the recent legalization of sports betting across many states in the US many are looking for statistical ways to beat the odds makers. While more popular betting sports (like football, boxing, and racing) have extremely sophisticated models to try and predict outcomes some smaller sports, such as hockey, do not. So, for my final project I wanted to see if I could create a model to predict the outcome of NHL games based on readily avaliable statistical information. 
 
 ## Introduction 
 
@@ -13,10 +8,17 @@ Provide a comprehensive background for your story/research.
 
 ## Description of Data
 
-This needs to be comprehensive.
+The data that I used for this project comes from the Python libraries of sportsipy and sportsreference. Below are the specific data sets from each library that I imported. 
 
-![Probability](https://drive.google.com/file/d/1_ggJk1kRK5FXPNsnZ_5tySxHbC9gqcRA/view?usp=sharing)
+```
+from sportsreference.nhl.teams import Teams
+from sportsipy.nhl.roster import Roster
+from sportsipy.nhl.roster import Player
+from sportsipy.nhl.schedule import Schedule
+from sportsipy.nhl.boxscore import Boxscore
+```
 
+These libraries contain information about all the the teams, players, and games from the NHL over the last 
 
 ## Description of all the methods applied
 
