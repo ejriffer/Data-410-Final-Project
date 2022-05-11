@@ -319,49 +319,59 @@ The accuracy for the above model was 0.6658, and the confusion matrix is shown b
 
 **Test Data**
 
+The next step was to use the models from above and run the test data through them. 
+
 The first classifier model I ran was a logistic regression. The below code shows this implementation. 
 
 ```
-log_reg = LR()
-log_reg.fit(Xtrainscaled, ytrain)
 predicted_log = log_reg.predict(Xtestscaled)
 cm_df_log_reg = pd.DataFrame(data = cm(ytest, predicted_log), columns = ['lose', 'win'], index = ['lose','win'])
 print(accuracy_score(ytest, predicted_log))
 cm_df_log_reg
 ```
 
+The accuracy for the above model was 0.5900, and the confusion matrix is shown below.
+
+<img width="138" alt="Screen Shot 2022-05-11 at 2 48 33 PM" src="https://user-images.githubusercontent.com/74326062/167923933-f33d465f-68c7-433d-b23f-affb91d93a78.png">
+
 The next classifier model I ran was a decision tree. The below code shows this implementation. 
 
 ```
-dtc = DTC(random_state = 1693)
-dtc.fit(Xtrainscaled, ytrain)
 predicted_dtr = dtc.predict(Xtestscaled)
 cm_df_dtr = pd.DataFrame(data = cm(ytest, predicted_dtr), columns = ['lose', 'win'], index = ['lose','win'])
 print(accuracy_score(ytest, predicted_dtr))
 cm_df_dtr
 ```
 
+The accuracy for the above model was 0.5406, and the confusion matrix is shown below.
+
+<img width="138" alt="Screen Shot 2022-05-11 at 2 49 27 PM" src="https://user-images.githubusercontent.com/74326062/167924085-55e25fe3-2e55-44d6-8167-2d62d7f84b5e.png">
+
 The next classifier model I ran was a random forest. The below code shows this implementation. 
 
 ```
-rfc = RFC(random_state = 1693)
-rfc.fit(Xtrainscaled, ytrain)
 predicted_rfc = rfc.predict(Xtestscaled)
 cm_df_rfc = pd.DataFrame(data = cm(ytest, predicted_rfc), columns = ['lose', 'win'], index = ['lose','win'])
 print(accuracy_score(ytest, predicted_rfc))
 cm_df_rfc
 ```
 
+The accuracy for the above model was 0.5434, and the confusion matrix is shown below.
+
+<img width="138" alt="Screen Shot 2022-05-11 at 2 49 59 PM" src="https://user-images.githubusercontent.com/74326062/167924188-296f4b1b-3f2a-413c-be02-cd9100369920.png">
+
 The next classifier model I ran was a k-nearest neighbors. The below code shows this implementation. 
 
 ```
-knn = KNeighborsClassifier()
-knn.fit(Xtrainscaled, ytrain)
 predicted_knn = knn.predict(Xtestscaled)
 cm_df_knn = pd.DataFrame(data = cm(ytest, predicted_knn), columns = ['lose', 'win'], index = ['lose','win'])
 print(accuracy_score(ytest, predicted_knn))
 cm_df_knn
 ```
+
+The accuracy for the above model was 0.5262, and the confusion matrix is shown below.
+
+<img width="138" alt="Screen Shot 2022-05-11 at 2 50 31 PM" src="https://user-images.githubusercontent.com/74326062/167924271-e9e1f960-dd8a-4b00-9791-05730e253827.png">
 
 ## Discussion and inferences
 
