@@ -224,7 +224,7 @@ Decision tree classifiers use decision trees to split the data into different no
 
 ![CodeCogsEqn-14](https://user-images.githubusercontent.com/74326062/167920906-48dbf239-61fc-4016-98d0-a1c3d95f6451.svg) 
 
-The goal is to minimize the gini impurity. 
+The goal of the decision tree is to minimize the gini impurity. 
 
 **Random Forest Classifier**
 
@@ -250,9 +250,11 @@ ytest = np.array(ytest)
 ytest = ytest.astype('int')
 ```
 
-The validation techniques that I chose to use were accuracy scores and a confusion matrix. The accuracy score shows the what percentage of the data was accurately classified as a win or a loss and the confusion matrix shows the number of data point EXPAND HERE
+The validation techniques that I chose to use were accuracy scores and a confusion matrix. The accuracy score shows the what percentage of the data was accurately classified as a win or a loss. The confusion matrix shows the number of true positives or correctly identified 'win' data, true negatives or correctly identified 'loss' data, false positives or incorrectly identified 'win' data, and false negatives or incorrectly identified 'win' data. 
 
 **Train Data**
+
+The first step in creating my model was running the train data through all four classification models I had chosen.  
 
 The first classifier model I ran was a logistic regression. The below code shows this implementation. 
 
