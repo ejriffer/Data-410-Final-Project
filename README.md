@@ -92,7 +92,7 @@ Each boxscore table had 42 columns for each game of which I used 15. One of the 
 
 Now that I had my five data frames I created my *X* data frame and corresponding *y* variable to use in my classification models. As stated before I wanted to use the 2014-15, 2015-16, and 2016-17 seasons to train my model and  the 2017-18 and 2018-19 seasons to test it. 
 
-The below code was used to create the *Xtrain* data.
+EXPLAIN CODE The below code was used to create the *Xtrain* data.
 
 ```
 Xtrain = pd.DataFrame()
@@ -118,9 +118,7 @@ for boxscore in [boxscores15, boxscores16, boxscores17]:
 Xtrain = Xtrain.reset_index(drop = True)
 ```
 
-EXPLAIN CODE
-
-The below code was used to create the *ytain* data.
+For the *ytrain* data I used the *winning_abbr* column from the data to create an array where 0 = loss and 1 = win. The below code was used to create the *ytain* data.
 
 ```
 ytrain = pd.DataFrame()
@@ -192,6 +190,23 @@ Xtest = pd.DataFrame(Xlist, columns = ['assists','even_strength_assists','even_s
                           'short_handed_goals','shots_on_goal'])
 ```
 
+The *ytest* data was created in the same way as the *ytrain*. The below code was used to creat *ytest*.
+
+```
+ytest = pd.DataFrame()
+for boxscore in [boxscores18, boxscores19]:
+    for i, team in zip(range(0,2461,82),team_abb):
+        temp = boxscore[i:i+82].reset_index()
+        temp['win'] = 'tbd'
+        for index, row in temp.iterrows():
+           if temp['winning_abbr'].iloc[index] == team:
+               temp['win'].iloc[index] = 1
+           else:
+              temp['win'].iloc[index] = 0
+        ytest = ytest.append(temp)
+ytest = ytest.reset_index(drop = True)
+ytest = ytest['win']
+```
 
 ### Classification Methods 
 
