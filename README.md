@@ -395,7 +395,7 @@ Bento, C. (2021, July 18). Decision tree classifier explained in real-life: Pick
 
 Clark, R. (2018). NHL package¶. NHL Package - sportsipy 0.1.0 documentation. Retrieved May 11, 2022, from https://sportsreference.readthedocs.io/en/stable/nhl.html 
 
-Thanda, A., Anamika Thanda Anamika ThandaOriginally from India, Thanda, A. T. A., Thanda, A., &amp; India, O. from. (2021, December 16). What is logistic regression? A beginner's guide [2022]. CareerFoundry. Retrieved May 11, 2022, from https://careerfoundry.com/en/blog/data-analytics/what-is-logistic-regression/ 
+Thanda, A. (2021, December 16). What is logistic regression? A beginner's guide [2022]. CareerFoundry. Retrieved May 11, 2022, from https://careerfoundry.com/en/blog/data-analytics/what-is-logistic-regression/ 
 
 Uberoi, A. (2022, March 10). K-nearest neighbours. GeeksforGeeks. Retrieved May 11, 2022, from https://www.geeksforgeeks.org/k-nearest-neighbours/ 
 
