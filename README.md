@@ -220,7 +220,11 @@ These values are the probability of each input variable belonging to one or the 
 
 **Decision Tree Classifier**
 
-Decision tree classifiers use decision trees to split the data into different nodes. The goal of this split is to group all of the data with others of it's same group. This splitting criteria is based on gini impurity which is defined as:![CodeCogsEqn-14](https://user-images.githubusercontent.com/74326062/167920906-48dbf239-61fc-4016-98d0-a1c3d95f6451.svg). The goal is to minimize the gini impurity. 
+Decision tree classifiers use decision trees to split the data into different nodes. The goal of this split is to group all of the data with others of it's same group. This splitting criteria is based on gini impurity which is defined as:
+
+![CodeCogsEqn-14](https://user-images.githubusercontent.com/74326062/167920906-48dbf239-61fc-4016-98d0-a1c3d95f6451.svg) 
+
+The goal is to minimize the gini impurity. 
 
 **Random Forest Classifier**
 
