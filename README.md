@@ -373,8 +373,8 @@ The accuracy for the above model was 0.5262, and the confusion matrix is shown b
 
 <img width="138" alt="Screen Shot 2022-05-11 at 2 51 14 PM" src="https://user-images.githubusercontent.com/74326062/167924440-eb579e27-0c2a-432c-baea-aa9ca3675c37.png">
 
-## Discussion and inferences
+## Discussion and Inferences
 
-Include your perspective and critical thinking. Comment what seems to be working and identify possible future research.
+Of the four models logistic regression had the highest accuracy on the test data. However, looking at the confusion matrix we see this is because it predicted all losses. This might be because the averaged values over 5 games are lower than a lot of the data the model saw in the train set, and now does not see any values that are close to what the model would predict as a win. I think there are ways to improve upon this model, including trying different penalties, or adding a constant\intercept to the model. 
 
 ## References
