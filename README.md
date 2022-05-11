@@ -371,7 +371,7 @@ cm_df_knn
 
 The accuracy for the above model was 0.5262, and the confusion matrix is shown below.
 
-<img width="138" alt="Screen Shot 2022-05-11 at 2 50 31 PM" src="https://user-images.githubusercontent.com/74326062/167924271-e9e1f960-dd8a-4b00-9791-05730e253827.png">
+<img width="138" alt="Screen Shot 2022-05-11 at 2 51 14 PM" src="https://user-images.githubusercontent.com/74326062/167924440-eb579e27-0c2a-432c-baea-aa9ca3675c37.png">
 
 ## Discussion and inferences
 
