@@ -385,6 +385,8 @@ K-nearest neighbors operated at a 0.5262, the lowest of the models but also abov
 
 Other ways to improve upon these models would be to add more *X* variables. The statisticals values used in these models are very basic but there are a number of additional variables that go into a team's win. Categories such as hits, blocks, face-off percentage, zone entries, takeaways, giveaways, etc. could improve a model's understanding of a team, and therefore their odds to win any given game. 
 
-In the context of the goals of this project, having a model above 0.5000 in accuracy mean that betting on every game would return more money than you lose. 
+In the context of the goals of this project, having a model above 0.5000 in accuracy mean that betting on every game would return more money than you lose. Using this model to bet would also require knowledge of how sports betting worked, because some of the predicted winners the model picks are probably also favorites in various sports betting companies. So, implimenting this model it would probably be most beneficial, from a financial standpoint, to wait until the model predicts a winner that is not favored in Vegas.
+
+Future research could be taken in a few directions. 
 
 ## References
