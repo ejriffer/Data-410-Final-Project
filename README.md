@@ -282,6 +282,10 @@ print(accuracy_score(ytrain, predicted_dtr))
 cm_df_dtr
 ```
 
+The accuracy for the above model was 0.8027, and the confusion matrix is shown below.
+
+<img width="138" alt="Screen Shot 2022-05-11 at 2 44 05 PM" src="https://user-images.githubusercontent.com/74326062/167923255-fd902770-1967-46ad-854d-f79005fbb003.png">
+
 The next classifier model I ran was a random forest. The below code shows this implementation. 
 
 ```
@@ -293,6 +297,11 @@ cm_df_rfc = pd.DataFrame(data = cm(ytrain, predicted_rfc), columns = ['lose', 'w
 cm_df_rfc
 ```
 
+The accuracy for the above model was 0.8027, and the confusion matrix is shown below.
+
+<img width="138" alt="Screen Shot 2022-05-11 at 2 45 26 PM" src="https://user-images.githubusercontent.com/74326062/167923338-c9c0d5f5-09f4-4e85-88d2-2c69a8d5edd9.png">
+
+
 The next classifier model I ran was a k-nearest neighbors. The below code shows this implementation. 
 
 ```
@@ -303,6 +312,10 @@ cm_df_knn = pd.DataFrame(data = cm(ytrain, predicted_knn), columns = ['lose', 'w
 print(accuracy_score(ytrain, predicted_knn))
 cm_df_knn
 ```
+
+The accuracy for the above model was 0.6658, and the confusion matrix is shown below.
+
+<img width="138" alt="Screen Shot 2022-05-11 at 2 45 52 PM" src="https://user-images.githubusercontent.com/74326062/167923420-05767820-7e70-4a5c-ae0f-80211065e020.png">
 
 **Test Data**
 
