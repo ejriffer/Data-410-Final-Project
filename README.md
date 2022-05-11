@@ -383,4 +383,8 @@ The decision tree classifier was just behind random forest at 0.5406, and is  ab
 
 K-nearest neighbors operated at a 0.5262, the lowest of the models but also above the 0.5000 threshold. This model could be improved by running the model with different *k* values to try and optimize the model. Investigating the different weights with the different *k* values could also be used to improve the model.
 
+Other ways to improve upon these models would be to add more *X* variables. The statisticals values used in these models are very basic but there are a number of additional variables that go into a team's win. Categories such as hits, blocks, face-off percentage, zone entries, takeaways, giveaways, etc. could improve a model's understanding of a team, and therefore their odds to win any given game. 
+
+In the context of the goals of this project, having a model above 0.5000 in accuracy mean that betting on every game would return more money than you lose. 
+
 ## References
