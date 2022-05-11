@@ -238,11 +238,53 @@ ytest = ytest.astype('int')
 
 The validation techniques that I chose to use were accuracy scores and a confusion matrix. The accuracy score shows the what percentage of the data was accurately classified as a win or a loss and the confusion matrix shows the number of data point EXPAND HERE
 
-**Train Data*
+**Train Data**
 
+The first classifier model I ran was a logistic regression. The below code shows this implementation. 
 
+```
+log_reg = LR()
+log_reg.fit(Xtrainscaled, ytrain)
+predicted_log = log_reg.predict(Xtrainscaled)
+cm_df_log_reg = pd.DataFrame(data = cm(ytrain, predicted_log), columns = ['lose', 'win'], index = ['lose','win'])
+print(accuracy_score(ytrain, predicted_log))
+cm_df_log_reg
+```
 
-**Test Data*
+The next classifier model I ran was a decision tree. The below code shows this implementation. 
+
+```
+dtc = DTC(random_state = 1693)
+dtc.fit(Xtrainscaled, ytrain)
+predicted_dtr = dtc.predict(Xtrainscaled)
+cm_df_dtr = pd.DataFrame(data = cm(ytrain, predicted_dtr), columns = ['lose', 'win'], index = ['lose','win'])
+print(accuracy_score(ytrain, predicted_dtr))
+cm_df_dtr
+```
+
+The next classifier model I ran was a random forest. The below code shows this implementation. 
+
+```
+rfc = RFC(random_state = 1693)
+rfc.fit(Xtrainscaled, ytrain)
+predicted_rfc = rfc.predict(Xtrainscaled)
+print(sum(ytrain == predicted_rfc)/ytrain.shape[0])
+cm_df_rfc = pd.DataFrame(data = cm(ytrain, predicted_rfc), columns = ['lose', 'win'], index = ['lose','win'])
+cm_df_rfc
+```
+
+The next classifier model I ran was a k-nearest neighbors. The below code shows this implementation. 
+
+```
+knn = KNeighborsClassifier()
+knn.fit(Xtrainscaled, ytrain)
+predicted_knn = knn.predict(Xtrainscaled)
+cm_df_knn = pd.DataFrame(data = cm(ytrain, predicted_knn), columns = ['lose', 'win'], index = ['lose','win'])
+print(accuracy_score(ytrain, predicted_knn))
+cm_df_knn
+```
+
+**Test Data**
 
 The first classifier model I ran was a logistic regression. The below code shows this implementation. 
 
