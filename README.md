@@ -4,8 +4,7 @@ With the recent legalization of sports betting across many states in the US many
 
 ## Introduction 
 
-For this project I would like to train different classification models on game data from the , and 
-2017-18, 2018-19
+For this project I would like to train different classification models on statistical output from specific NHL games to see if a model can be created to predict the outcome of that specific game. Then, that model can be used predict the outcome of future games based on the recent data for the teams involved in that game.  
 
 ## Description of Data
 
@@ -51,21 +50,6 @@ def create_boxscores_table():
                     boxscore_index_list.append(boxscore_index) # append boxscore_id to list to add to df
 
                     boxscores_table = boxscores_table.append(boxscore, ignore_index = True)
-
-    df1 = boxscores_table.pop('away_goals')
-    df2 = boxscores_table.pop('date')
-    df3 = boxscores_table.pop('home_goals')
-    df4 = boxscores_table.pop('losing_name')
-    df5 = boxscores_table.pop('winning_name')
-    df6 = boxscores_table.pop('winner')
-
-    boxscores_table.insert(0, 'boxscore_index', boxscore_index_list)
-    boxscores_table.insert(1, 'date', df2)
-    boxscores_table.insert(4, 'winner', df6)
-    boxscores_table.insert(5, 'winning_name', df5)
-    boxscores_table.insert(6, 'losing_name', df4)
-    boxscores_table.insert(7, 'home_goals', df3)
-    boxscores_table.insert(8, 'away_goals', df1)
 
     return boxscores_table
 ```
@@ -135,7 +119,27 @@ for boxscore in [boxscores15, boxscores16, boxscores17]:
 Xtrain = Xtrain.reset_index(drop = True)
 ```
 
-This code 
+EXPLAIN CODE
+
+The below code was used to create the *ytain* data.
+
+```
+ytrain = pd.DataFrame()
+for boxscore in [boxscores15, boxscores16, boxscores17]:
+    for i, team in zip(range(0,2461,82),team_abb):
+        temp = boxscore[i:i+82].reset_index()
+        temp['win'] = 'tbd'
+        for index, row in temp.iterrows():
+           if temp['winning_abbr'].iloc[index] == team:
+               temp['win'].iloc[index] = 1
+           else:
+              temp['win'].iloc[index] = 0
+        ytrain = ytrain.append(temp)
+ytrain = ytrain.reset_index(drop = True)
+ytrain = ytrain['win']
+```
+
+While the train data was straightforward, the statistical output from each game
 
 ### Classification Methods 
 
