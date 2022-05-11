@@ -387,6 +387,6 @@ Other ways to improve upon these models would be to add more *X* variables. The 
 
 In the context of the goals of this project, having a model above 0.5000 in accuracy mean that betting on every game would return more money than you lose. Using this model to bet would also require knowledge of how sports betting worked, because some of the predicted winners the model picks are probably also favorites in various sports betting companies. So, implimenting this model it would probably be most beneficial, from a financial standpoint, to wait until the model predicts a winner that is not favored in Vegas.
 
-Future research could be taken in a few directions. 
+Future research could be taken in a few directions. If someone wanted to research further into NHL statistics they could try and create some sort of wins above replacement (WAR)/value over replacement player (VORP) variable. These variables are more common in other sports such as baseball or basketball and measure how much more value a player adds to their team at their position than a slighly below avergae (or 'replacement') player would in their place. While this statistic has been attempted for NHL players there is still not one gererally accepted formula or variable. If one were to create this variable it could be added to this model to help predict team wins, and could also be used for other individual player bets or fantasy leagues. 
 
 ## References
