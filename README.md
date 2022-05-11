@@ -390,3 +390,14 @@ In the context of the goals of this project, having a model above 0.5000 in accu
 If someone wanted to research further into NHL statistics they could try and create some sort of wins above replacement (WAR)/value over replacement player (VORP) variable. These variables are more common in other sports such as baseball or basketball and measure how much more value a player adds to their team at their position than a slighly below avergae (or 'replacement') player would in their place. While this statistic has been attempted for NHL players there is still not one gererally accepted formula or variable. If one were to create this variable it could be added to this model to help predict team wins, and could also be used for other individual player bets or fantasy leagues.
 
 ## References
+
+Bento, C. (2021, July 18). Decision tree classifier explained in real-life: Picking a vacation destination. Medium. Retrieved May 11, 2022, from https://towardsdatascience.com/decision-tree-classifier-explained-in-real-life-picking-a-vacation-destination-6226b2b60575 
+
+Clark, R. (2018). NHL package¶. NHL Package - sportsipy 0.1.0 documentation. Retrieved May 11, 2022, from https://sportsreference.readthedocs.io/en/stable/nhl.html 
+
+Thanda, A., Anamika Thanda Anamika ThandaOriginally from India, Thanda, A. T. A., Thanda, A., &amp; India, O. from. (2021, December 16). What is logistic regression? A beginner's guide [2022]. CareerFoundry. Retrieved May 11, 2022, from https://careerfoundry.com/en/blog/data-analytics/what-is-logistic-regression/ 
+
+Uberoi, A. (2022, March 10). K-nearest neighbours. GeeksforGeeks. Retrieved May 11, 2022, from https://www.geeksforgeeks.org/k-nearest-neighbours/ 
+
+Vadapalli, P. (2022, April 18). Random forest classifier: Overview, how does it work, pros &amp; cons. upGrad blog. Retrieved May 11, 2022, from https://www.upgrad.com/blog/random-forest-classifier/ 
+
