@@ -44,7 +44,6 @@ def create_boxscores_table():
         for team in team_abb:
 
             for boxscore_index in Schedule(str(team), year = year).dataframe['boxscore_index']:
-        # use Schedule to get all the boxscore indexes for that season
                 if team != 'VEG' or 'SEA':
                     boxscore = Boxscore(str(boxscore_index)).dataframe # get boxscore info for specific game in specific season
                     boxscore_index_list.append(boxscore_index) # append boxscore_id to list to add to df
@@ -139,7 +138,25 @@ ytrain = ytrain.reset_index(drop = True)
 ytrain = ytrain['win']
 ```
 
-While the train data was straightforward, the statistical output from each game
+While the train data was straightforward (simply the statistical output from each team in each game) the test data was a bit more complicated to create. The train data is statistical information only avaliable after a game is complete, but in order to predict future games we need to use informaiton that is avaliable before the game starts. So, I chose to average the statistical output from a team over their last five games as the input varaibles. 
+
+The first step in creating the *Xtest* data was to create a dataframe for each team with their last 5 games from the 2016-17 season and all of their games from the 2017-18 and 2018-19 seasons. The last five games from the 2016-17 season are needed for the first few games of the 2017-18 season. The below code shows the creation of these initial dataframes. 
+
+```
+d = {}
+for i, team in zip(range(0,2461,82),team_abb):
+    d[team] = pd.DataFrame()
+    temp = boxscores17[i:i+82].reset_index()
+    team_last_5 = temp[-5:]
+    d[team] = team_last_5
+for i, team in zip(range(0,2461,82),team_abb):
+  temp = boxscores18[i:i+82].reset_index()
+  d[team] = d[team].append(temp)
+for i, team in zip(range(0,2461,82),team_abb):
+  temp = boxscores19[i:i+82].reset_index()
+  d[team] = d[team].append(temp)
+  d[team] = d[team].reset_index(drop = True)
+```
 
 ### Classification Methods 
 
