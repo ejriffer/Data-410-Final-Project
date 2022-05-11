@@ -70,6 +70,37 @@ def create_boxscores_table():
     return boxscores_table
 ```
 
+I then saved each output table to be able to call them in the future. Each output table had 42 columns of which I used 15. One of the columns was 'winning_abbr' which showed which team wone that particular game. The other 14 columns of importance held statistical information from the game. They were:
+
+**assists**:
+
+**even_strength_assists**:
+
+**even_strength_goals**: 
+
+**goals**:
+
+**penalties_in_minutes**:
+
+**points**:
+
+**power_play_assists**:
+
+**power_play_goals**:
+
+**save_percentage**:
+
+**saves**:
+
+**shooting_percentage**:
+
+**short_handed_assists**:
+
+**short_handed_goals**:
+
+**shots_on_goal**:
+
+
 ## Description of all the methods applied
 
 ### Pre-processing methods
