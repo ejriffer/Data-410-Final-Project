@@ -252,9 +252,9 @@ ytest = ytest.astype('int')
 
 The validation techniques that I chose to use were accuracy scores and a confusion matrix. The accuracy score shows the what percentage of the data was accurately classified as a win or a loss. The confusion matrix shows the number of true positives or correctly identified 'win' data, true negatives or correctly identified 'loss' data, false positives or incorrectly identified 'win' data, and false negatives or incorrectly identified 'win' data. 
 
-**Train Data**
-
 The first step in creating my model was running the train data through all four classification models I had chosen.  
+
+**Train Data**
 
 The first classifier model I ran was a logistic regression. The below code shows this implementation. 
 
@@ -266,6 +266,10 @@ cm_df_log_reg = pd.DataFrame(data = cm(ytrain, predicted_log), columns = ['lose'
 print(accuracy_score(ytrain, predicted_log))
 cm_df_log_reg
 ```
+
+The accuracy for the above model was 0.5897, and the confusion matrix is shown below.
+
+<img width="138" alt="Screen Shot 2022-05-11 at 2 43 15 PM" src="https://user-images.githubusercontent.com/74326062/167922942-36d08ffe-e99e-4820-a62a-18e0df245cc7.png">
 
 The next classifier model I ran was a decision tree. The below code shows this implementation. 
 
