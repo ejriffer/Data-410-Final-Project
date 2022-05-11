@@ -1,10 +1,10 @@
 # Modeling the NHL: Using KPIs to Predict the Outcome of Games
 
-With the recent legalization of sports betting across many states in the US many are looking for statistical ways to beat the odds makers. While more popular betting sports (like football, boxing, and racing) have extremely sophisticated models to try and predict outcomes some smaller sports, such as hockey, do not. So, for my final project I wanted to see if I could create a model to predict the outcome of NHL games based on readily avaliable statistical information. 
+With the recent legalization of sports betting across many states in the US some people are looking for statistical ways to beat the odds makers. While more popular betting sports (like football, boxing, and racing) have extremely sophisticated models to try and predict outcomes some smaller sports, such as hockey, do not. So, for my final project I wanted to see if I could create a model to predict the outcome of NHL games based on readily avaliable statistical information. 
 
 ## Introduction 
 
-For this project I would like to train different classification models on statistical output from specific NHL games to see if a model can be created to predict the outcome of that specific game. Then, that model can be used predict the outcome of future games based on the recent data for the teams involved in that game.  
+For this project I would like to train different classification models on statistical outputs from specific NHL games to see if a model can be created to predict the outcome of that specific game. Then, that model can be used predict the outcome of future games based on the recent data for the teams involved in that game.  
 
 ## Description of Data
 
@@ -18,9 +18,9 @@ from sportsipy.nhl.schedule import Schedule
 from sportsipy.nhl.boxscore import Boxscore
 ```
 
-These libraries contain information about all the the teams, players, and games from the NHL over the last few decades, as they started keeping track of these statistics. I chose to use the seasons 2014-15, 2015-16, and 2016-17 to train my model and test it on the 2017-18 and 2018-19 seasons. I chose these seasons because they are the last five full seasons the NHL played before the COVID-19 Pandemic. 
+These libraries contain information about all the the teams, players, and games from the NHL over the last few decades, as they started keeping track of these statistics. I chose to use the seasons 2014-15, 2015-16, and 2016-17 to train my model and test it on the 2017-18 and 2018-19 seasons. I chose these seasons because they are the last five full seasons the NHL played before the COVID-19 Pandemic, which drastically affected the way the last few seasons were played. 
 
-The first step in the project was subsetting the data based on year and team. I decided to create one dataframe for each NHL season with the rows grouped by team. I started by creating a list of each team's abbreviation to be able to iterate through for the rest of the project. I chose to exclude the Vegas Golden Knights  because their first season of existence was the 2017-18 season, and thus would have no games in the seasons that trained the model. I also had to exclude the Seattle Kraken because their first season was this past year and would not have any data across any of the chosen seasons but would still show up in the data if I did not exclude them .
+The first step in the project was subsetting the data based on year and team. I decided to create one dataframe for each NHL season with the rows grouped by team. I started by creating a list of each team's abbreviation to be able to iterate through for the rest of the project. I chose to exclude the Vegas Golden Knights as their first season of existence was the 2017-18 season, and thus would have no games in the seasons that trained the model. I also excluded the Seattle Kraken as their first season of existence was this past year, and would therefore not have any data across any of the chosen seasons.
 
 Below is the code to create the team abbreviation list. 
 
@@ -33,20 +33,24 @@ team_abb.remove('VEG')
 team_abb.remove('SEA')
 ```
 
-Below is the code that I used to create each data set. For each season I changed the input year from 2015 through 2019.
+Below is the code that I used to create each data set by year. For each season I reran the function and changed the input year from 2015 through 2019.
 
 ```
 def create_boxscores_table():
+
     boxscore_index_list = []
     boxscores_table = pd.DataFrame() 
+    
     for year in range(2016,2017,1):
     
         for team in team_abb:
 
             for boxscore_index in Schedule(str(team), year = year).dataframe['boxscore_index']:
+            
                 if team != 'VEG' or 'SEA':
-                    boxscore = Boxscore(str(boxscore_index)).dataframe # get boxscore info for specific game in specific season
-                    boxscore_index_list.append(boxscore_index) # append boxscore_id to list to add to df
+                
+                    boxscore = Boxscore(str(boxscore_index)).dataframe 
+                    boxscore_index_list.append(boxscore_index)
 
                     boxscores_table = boxscores_table.append(boxscore, ignore_index = True)
 
@@ -55,7 +59,7 @@ def create_boxscores_table():
 
 I then saved each output table (which I called 'boxscores' + the specific year) to be able to call them in the future. Each boxscore table had 2,460 columns, or 82 regular season games for the 30 teams. The rows were grouped by team and within each team it was grouped chronologically through the season.
 
-Each boxscore table had 42 columns for each game of which I used 16. One of the columns was *winning_abbr* which showed which team won that particular game, which will help me create my output or classification variable. Another column was *boxscore_index* which helped me determine if the game was a home or away game for a specific team. The other 14 columns of importance held statistical information from the game, which will be my input variables. They were:
+Each boxscore table had 42 columns for each game of which I used 16. One of the columns was *winning_abbr* which showed which team won that particular game, which helped me create my output *y* or classification variable. Another column was *boxscore_index* which helped me determine if the game was a home or away game for a specific team, which I needed to get the correct set of statistics for each game. The other 14 columns of importance held statistical information from the game, which were my input variables. They were:
 
 **assists**: the number of assists the team registered
 
@@ -73,9 +77,9 @@ Each boxscore table had 42 columns for each game of which I used 16. One of the 
 
 **power_play_goals**: the number of goals the team scored while on the power play
 
-**save_percentage**: the percentage of shots the team saved (ranges from 0-1)
+**save_percentage**: the percentage of shots the team's goalie(s) saved (ranges from 0-1)
 
-**saves**: the number of saves the team made
+**saves**: the number of saves the team's goalie(s) made
 
 **shooting_percentage**: the percentage of the teams shots that scored (ranges from 0-100)
 
@@ -85,14 +89,15 @@ Each boxscore table had 42 columns for each game of which I used 16. One of the 
 
 **shots_on_goal**: the number of shots on goal the team registered
 
+The different types of assists/goals/points (even strength, power play, short handed) are based on the number of people on the ice for that team. When a team takes a penalty that team will then have one less person on the ice for a certain amount of time, either two or five minutes. Even strength means both teams have the same number of skaters on the ice, power play means their team has one (or more) additional skater on the ice, and short handed means their team has one (or more) less skaters on the ice.
 
 ## Methods
 
 ### Pre-Processing Methods
 
-Now that I had my five data frames I created my *X* data frame and corresponding *y* variable to use in my classification models. As stated before I wanted to use the 2014-15, 2015-16, and 2016-17 seasons to train my model and  the 2017-18 and 2018-19 seasons to test it. 
+Now that I had my five data frames, one for each season, I created my *X* data frame and corresponding *y* variable to use in my classification models. As stated before I used the 2014-15, 2015-16, and 2016-17 seasons to train my model, and the 2017-18 and 2018-19 seasons to test it. 
 
-For the *Xtrain* data I used took the dataframes in units of 82 rows each (a full season for one team) and used the *boxscore_index* to determine whether or not the game was a home or away game for a team. Then I either took the *home* or *away* statistics from the game that corresponded to the team I was looking at at that specific moment. The below code was used to create the *Xtrain* data.
+For the *Xtrain* data I used took the dataframes in units of 82 rows each (which was a full season for one team) and used the *boxscore_index* to determine whether or not the game was a home or away game for a team. Then I either took the *home* or *away* statistics from the game that corresponded to the team I was looking at at that specific moment. The below code was used to create the *Xtrain* data.
 
 ```
 Xtrain = pd.DataFrame()
@@ -136,7 +141,7 @@ ytrain = ytrain.reset_index(drop = True)
 ytrain = ytrain['win']
 ```
 
-While the train data was straightforward (simply the statistical output from each team in each game) the test data was a bit more complicated to create. The train data is statistical information only avaliable after a game is complete, but in order to predict future games we need to use informaiton that is avaliable before the game starts. So, I chose to average the statistical output from a team over their last five games as the input varaibles. 
+While the train data was straightforward (simply the statistical output from each team in each game) the test data was a bit more complicated to create. The train data is statistical information only avaliable after a game is complete, but in order to predict future games we need to use informaiton that is avaliable before the game starts. So, I chose to average the statistical output from a team over their last five games as the input varaibles.
 
 The first step in creating the *Xtest* data was to create a dataframe for each team with their last 5 games from the 2016-17 season and all of their games from the 2017-18 and 2018-19 seasons. The last five games from the 2016-17 season are needed for the first few games of the 2017-18 season. The below code shows the creation of these initial dataframes. 
 
@@ -156,7 +161,7 @@ for i, team in zip(range(0,2461,82),team_abb):
   d[team] = d[team].reset_index(drop = True)
 ```
 
-The next step is to use these dataframes to create the *Xtest* dataframe. I used a shifting subset of the data to grab five rows shifting down one row in each iteration. The rest of the code is the same as for *Xtrain* above. The below code was used to create *Xtrain*.
+The next step is to use these dataframes to create the *Xtest* dataframe. I used a shifting subset of the data to grab five rows shifting down one row in each iteration and then average each column to be the input variables. The rest of the code is the same as for *Xtrain* above. The below code was used to create *Xtrain*.
 
 ```
 Xlist = []
