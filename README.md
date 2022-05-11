@@ -72,33 +72,33 @@ def create_boxscores_table():
 
 I then saved each output table to be able to call them in the future. Each output table had 42 columns of which I used 15. One of the columns was 'winning_abbr' which showed which team wone that particular game. The other 14 columns of importance held statistical information from the game. They were:
 
-**assists**:
+**assists**: the number of assists the team registered
 
-**even_strength_assists**:
+**even_strength_assists**: the number of assists the team registered while at even strength
 
-**even_strength_goals**: 
+**even_strength_goals**: the number of goals the team scored at even strength
 
-**goals**:
+**goals**: the number of goals the team scored
 
-**penalties_in_minutes**:
+**penalties_in_minutes**: the length of time the team spent in the penalty box
 
-**points**:
+**points**:the number of points the team registerd
 
-**power_play_assists**:
+**power_play_assists**: the number of assists the team registered while on the power play
 
-**power_play_goals**:
+**power_play_goals**: the number of goals the team scored while on the power play
 
-**save_percentage**:
+**save_percentage**: the percentage of shots the team saved (ranges from 0-1)
 
-**saves**:
+**saves**: the number of saves the team made
 
-**shooting_percentage**:
+**shooting_percentage**: the percentage of the teams shots that scored (ranges from 0-100)
 
-**short_handed_assists**:
+**short_handed_assists**: the number of assists the team registered while short handed
 
-**short_handed_goals**:
+**short_handed_goals**: the number of goals the teams scored while short handed
 
-**shots_on_goal**:
+**shots_on_goal**: the number of shots on goal the team registered
 
 
 ## Description of all the methods applied
