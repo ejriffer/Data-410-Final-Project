@@ -55,7 +55,7 @@ def create_boxscores_table():
 
 I then saved each output table (which I called 'boxscores' + the specific year) to be able to call them in the future. Each boxscore table had 2,460 columns, or 82 regular season games for the 30 teams. The rows were grouped by team and within each team it was grouped chronologically through the season.
 
-Each boxscore table had 42 columns for each game of which I used 15. One of the columns was 'winning_abbr' which showed which team wone that particular game, which will help me create my output or classification variable. The other 14 columns of importance held statistical information from the game, which will be my input variables. They were:
+Each boxscore table had 42 columns for each game of which I used 16. One of the columns was 'winning_abbr' which showed which team wone that particular game, which will help me create my output or classification variable. Another column was boxscore_index which helped me determine if the game was a home or away game for a specific team. The other 14 columns of importance held statistical information from the game, which will be my input variables. They were:
 
 **assists**: the number of assists the team registered
 
@@ -92,7 +92,7 @@ Each boxscore table had 42 columns for each game of which I used 15. One of the 
 
 Now that I had my five data frames I created my *X* data frame and corresponding *y* variable to use in my classification models. As stated before I wanted to use the 2014-15, 2015-16, and 2016-17 seasons to train my model and  the 2017-18 and 2018-19 seasons to test it. 
 
-EXPLAIN CODE The below code was used to create the *Xtrain* data.
+For the *Xtrain* data I used took the dataframes in units of 82 rows each (a full season for one team) and used the *boxscore_index* to determine whether or not the game was a home or away game for a team. Then I either took the *home* or *away* statistics from the game that corresponded to the team I was looking at at that specific moment. The below code was used to create the *Xtrain* data.
 
 ```
 Xtrain = pd.DataFrame()
