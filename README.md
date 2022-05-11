@@ -55,7 +55,7 @@ def create_boxscores_table():
 
 I then saved each output table (which I called 'boxscores' + the specific year) to be able to call them in the future. Each boxscore table had 2,460 columns, or 82 regular season games for the 30 teams. The rows were grouped by team and within each team it was grouped chronologically through the season.
 
-Each boxscore table had 42 columns for each game of which I used 16. One of the columns was 'winning_abbr' which showed which team wone that particular game, which will help me create my output or classification variable. Another column was boxscore_index which helped me determine if the game was a home or away game for a specific team. The other 14 columns of importance held statistical information from the game, which will be my input variables. They were:
+Each boxscore table had 42 columns for each game of which I used 16. One of the columns was *winning_abbr* which showed which team won that particular game, which will help me create my output or classification variable. Another column was *boxscore_index* which helped me determine if the game was a home or away game for a specific team. The other 14 columns of importance held statistical information from the game, which will be my input variables. They were:
 
 **assists**: the number of assists the team registered
 
