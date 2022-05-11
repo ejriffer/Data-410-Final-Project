@@ -1,10 +1,10 @@
 # Modeling the NHL: Using KPIs to Predict the Outcome of Games
 
-With the recent legalization of sports betting across many states in the US some people are looking for statistical ways to beat the odds makers. While more popular betting sports (like football, boxing, and racing) have extremely sophisticated models to try and predict outcomes some smaller sports, such as hockey, do not. So, for my final project I wanted to see if I could create a model to predict the outcome of NHL games based on readily avaliable statistical information. 
+With the recent legalization of sports betting across many states in the US some people are looking for statistical ways to beat the odds makers. While more popular betting sports (like football, boxing, and racing) have extremely sophisticated models to try and predict outcomes, some smaller sports, such as hockey, do not. So, for my final project I wanted to see if I could create a model to predict the outcome of NHL games based on readily avaliable statistical information. 
 
 ## Introduction 
 
-For this project I would like to train different classification models on statistical outputs from specific NHL games to see if a model can be created to predict the outcome of that specific game. Then, that model can be used predict the outcome of future games based on the recent data for the teams involved in that game.  
+For this project, I would like to train different classification models on statistical outputs from specific NHL games to see if a model can be created to predict the outcome of that specific game. Then, that model can be used predict the outcome of future games based on the recent data for the teams involved in that game.  
 
 ## Description of Data
 
@@ -81,7 +81,7 @@ Each boxscore table had 42 columns for each game of which I used 16. One of the 
 
 **saves**: the number of saves the team's goalie(s) made
 
-**shooting_percentage**: the percentage of the teams shots that scored (ranges from 0-100)
+**shooting_percentage**: the percentage of the team's shots that scored (ranges from 0-100)
 
 **short_handed_assists**: the number of assists the team registered while short handed
 
@@ -89,7 +89,7 @@ Each boxscore table had 42 columns for each game of which I used 16. One of the 
 
 **shots_on_goal**: the number of shots on goal the team registered
 
-The different types of assists/goals/points (even strength, power play, short handed) are based on the number of people on the ice for that team. When a team takes a penalty that team will then have one less person on the ice for a certain amount of time, either two or five minutes. Even strength means both teams have the same number of skaters on the ice, power play means their team has one (or more) additional skater on the ice, and short handed means their team has one (or more) less skaters on the ice.
+The different types of assists/goals/points (even strength, power play, short handed) are based on the number of people on the ice for that team. When a team takes a penalty that team will then have one less person on the ice for a certain amount of time, either two or five minutes. Even strength means both teams have the same number of skaters on the ice, power play means their team has one (or more) additional skater on the ice, and short handed means their team has one (or more) less skater on the ice.
 
 ## Methods
 
@@ -141,7 +141,7 @@ ytrain = ytrain.reset_index(drop = True)
 ytrain = ytrain['win']
 ```
 
-While the train data was straightforward (simply the statistical output from each team in each game) the test data was a bit more complicated to create. The train data is statistical information only avaliable after a game is complete, but in order to predict future games we need to use informaiton that is avaliable before the game starts. So, I chose to average the statistical output from a team over their last five games as the input varaibles.
+While the train data was straightforward (simply the statistical output from each team in each game) the test data was a bit more complicated to create. The train data is statistical information only avaliable after a game is complete, but in order to predict future games we need to use information that is avaliable before the game starts. So, I chose to average the statistical output from a team over their last five games as the input variables.
 
 The first step in creating the *Xtest* data was to create a dataframe for each team with their last 5 games from the 2016-17 season and all of their games from the 2017-18 and 2018-19 seasons. The last five games from the 2016-17 season are needed for the first few games of the 2017-18 season. The below code shows the creation of these initial dataframes. 
 
@@ -223,7 +223,7 @@ Logistic regression is a classification algorithm that determines the probabilit
 
 **Decision Tree Classifier**
 
-Decision tree classifiers use decision trees to split the data into different nodes. The goal of this split is to group all of the data with others of it's same group. This splitting criteria is based on gini impurity which is defined as:
+Decision tree classifiers use decision trees to split the data into different nodes. The goal of this split is to group all of the data with others of its same group. This splitting criteria is based on gini impurity which is defined as:
 
 ![CodeCogsEqn-14](https://user-images.githubusercontent.com/74326062/167920906-48dbf239-61fc-4016-98d0-a1c3d95f6451.svg) 
 
@@ -231,15 +231,15 @@ The goal of the decision tree is to minimize the gini impurity.
 
 **Random Forest Classifier**
 
-Random forest classifier is an ensemble model as it is made up of many decision trees. The prediction from a random forest is found by taking the average from every tree in the forest. To make sure each tree is not exactly identical new data will be boostraped, or randomly generated in a way that is still very similar to the original set. 
+Random forest classifier is an ensemble model as it is made up of many decision trees. The prediction from a random forest is found by taking the average from every tree in the forest. To make sure each tree is not exactly identical, new data will be boostraped, or randomly generated in a way that is still very similar to the original set. 
 
 **K-Nearest Neighbors Classifier**
 
-K-nearest neighbors classifiers assigns the input to whatever group the majority of it's *k* nearest neighbors are in. The variable *k* defaults at 5 but can any number the user chooses. 
+K-nearest neighbors classifiers assign the input to whatever group the majority of it's *k* nearest neighbors are in. The variable *k* defaults at 5 but can use any number the user chooses. 
 
 ### Application and Validation
 
-Before running my data through the classifiers I standardized the *X* data so all of the values were on the same scale so no one variable dominated the model. I also turned my *y* data into a numpy array of integers so the models could classify the games as wins and losses properly. The below code shows this for the train and test data.
+Before running my data through the classifiers, I standardized the *X* data so all of the values were on the same scale to ensure no one variable dominated the model. I also turned my *y* data into a numpy array of integers so the models could classify the games as wins and losses properly. The below code shows this for the train and test data.
 
 ```
 scaler = StandardScaler()
@@ -253,7 +253,7 @@ ytest = np.array(ytest)
 ytest = ytest.astype('int')
 ```
 
-The validation techniques that I chose to use were accuracy scores and a confusion matrix. The accuracy score shows the what percentage of the data was accurately classified as a win or a loss. The confusion matrix shows the number of true positives or correctly identified 'win' data, true negatives or correctly identified 'loss' data, false positives or incorrectly identified 'win' data, and false negatives or incorrectly identified 'win' data. Both of these validation techniques are needed as looking at just the accuracy statistic can be misleading, but looking at just a confusion matrix can be difficult to compare between models. 
+The validation techniques that I chose to use were accuracy scores and a confusion matrix. The accuracy score shows what percentage of the data was accurately classified as a win or a loss. The confusion matrix shows the number of true positives or correctly identified 'win' data, true negatives or correctly identified 'loss' data, false positives or incorrectly identified 'win' data, and false negatives or incorrectly identified 'win' data. Both of these validation techniques are needed as looking at just the accuracy statistic can be misleading but looking at just a confusion matrix can be difficult to compare between models. 
 
 The first step in creating my models was running the train data through all four classification models I had chosen.  
 
@@ -378,7 +378,7 @@ The accuracy for the above model was 0.5262, and the confusion matrix is shown b
 
 ## Discussion and Inferences
 
-Of the four models logistic regression had the highest accuracy on the test data at 0.5900. However, looking at the confusion matrix we see this is because it predicted all losses. This might be because the averaged values over 5 games are lower than a lot of the data the model saw in the train set, and now does not see any values that are close to what the model would predict as a win. I think there are ways to improve upon this model, including trying different penalties (such as L1 or Elastic Net), or adding a constant/intercept to the model. 
+Of the four models, logistic regression had the highest accuracy on the test data at 0.5900. However, looking at the confusion matrix we see this is because it predicted all losses. This might be because the averaged values over 5 games are lower than a lot of the data the model saw in the train set, and it now does not see any values that are close to what the model would predict as a win. I think there are ways to improve upon this model, including trying different penalties (such as L1 or Elastic Net), or adding a constant/intercept to the model. 
 
 The model with the next highest accuracy on the test data was random forest classifier at 0.5434. While this is a decrease from the train data (accuracy 0.8027) it is above 0.5000 which shows that the model is utilizing the input variables to predict at a higher rate than randomly guessing. In order to improve this model you could look at hyperparameters such as max_depth or min_samples_split. 
 
@@ -388,9 +388,9 @@ K-nearest neighbors operated at a 0.5262, the lowest of the models but also abov
 
 Other ways to improve upon these models would be to add more *X* variables. The statisticals values used in these models are very basic but there are a number of additional variables that go into a team's win. Categories such as hits, blocks, face-off win percentage, takeaways, giveaways, etc. could improve a model's understanding of a team, and therefore their odds to win any given game. 
 
-In the context of the goals of this project, having a model above 0.5000 in accuracy mean that betting on every game would return more money than you lose. Using this model to bet would also require knowledge of how sports betting worked, because some of the predicted winners the model picks are probably also favorites in various sports betting companies. So, implimenting this model it would probably be most beneficial, from a financial standpoint, to wait until the model predicts a winner that is not favored in Vegas and betting on them. 
+In the context of the goals of this project, having a model above 0.5000 in accuracy mean that betting on every game would return more money than you lose. Using this model to bet would also require knowledge of how sports betting worked, because some of the predicted winners the model picks are probably also favorites in various sports betting companies. So, when implimenting this model it would probably be most beneficial, from a financial standpoint, to wait until the model predicts a winner that is not favored in Vegas and betting on them. 
 
-If someone wanted to research further into NHL statistics they could try and create some sort of wins above replacement (WAR)/value over replacement player (VORP) variable. These variables are more common in other sports such as baseball or basketball and measure how much more value a player adds to their team at their position than a slighly below avergae (or 'replacement') player would in their place. While this statistic has been attempted for NHL players there is still not one gererally accepted formula or variable. If one were to create this variable it could be added to this model to help predict team wins, and could also be used for other bets on individual player or in fantasy leagues.
+If someone wanted to research further into NHL statistics, they could try and create some sort of wins above replacement (WAR)/value over replacement player (VORP) variable. These variables are more common in other sports such as baseball or basketball and measure how much more value a player adds to their team at their position than a slighly below average (or 'replacement') player would in their place. While this statistic has been attempted for NHL players there is still not one generally accepted formula or variable. If one were to create this variable it could be added to this model to help predict team wins and could also be used for other bets on individual player or in fantasy leagues.
 
 ## References
 
