@@ -70,7 +70,9 @@ def create_boxscores_table():
     return boxscores_table
 ```
 
-I then saved each output table to be able to call them in the future. Each output table had 42 columns of which I used 15. One of the columns was 'winning_abbr' which showed which team wone that particular game. The other 14 columns of importance held statistical information from the game. They were:
+I then saved each output table (which I called 'boxscores' + the specific year) to be able to call them in the future. Each boxscore table had 2,460 columns, or 82 regular season games for the 30 teams. The rows were grouped by team and within each team it was grouped chronologically through the season.
+
+Each boxscore table had 42 columns for each game of which I used 15. One of the columns was 'winning_abbr' which showed which team wone that particular game, which will help me create my output or classification variable. The other 14 columns of importance held statistical information from the game, which will be my input variables. They were:
 
 **assists**: the number of assists the team registered
 
@@ -132,6 +134,8 @@ for boxscore in [boxscores15, boxscores16, boxscores17]:
         Xtrain = Xtrain.append(tempX)
 Xtrain = Xtrain.reset_index(drop = True)
 ```
+
+This code 
 
 ### Classification Methods 
 
