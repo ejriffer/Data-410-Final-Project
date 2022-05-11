@@ -215,13 +215,11 @@ ytest = ytest['win']
 
 ### Classification Methods 
 
-For this project I chose to use four classification models to see if one performed better than the others. The models I chose were Logistic Regression, Decision Tree, Random Forest, and K-Nearest Neighbors. 
+For this project I chose to compare four classification models. The models I chose were Logistic Regression, Decision Tree, Random Forest, and K-Nearest Neighbors. 
 
 **Logistic Regression**
 
-Logistic regression is a classification algorithm that determines the probability of one event out of two options. It is a linear regression model but the final output of the model is transformed by a logistic/sigmoid function which maps the output variable between 0 and 1. 
-
-These values are the probability of each input variable belonging to one or the other group. For this project I used hard classifications, or assigning the variable to the group (either 0/loss or 1/win) that it sayd it is more likely to be in. 
+Logistic regression is a classification algorithm that determines the probability of one event out of two options. It is a linear regression model but the final output of the model is transformed by a logistic/sigmoid function which maps the output variable between 0 and 1. These values are the probability of each input variable belonging to one or the other group. For this project I used hard classifications, or assigning the variable to the group (either 0/loss or 1/win) that the classification said it was more likely to be in. 
 
 **Decision Tree Classifier**
 
@@ -233,7 +231,7 @@ The goal of the decision tree is to minimize the gini impurity.
 
 **Random Forest Classifier**
 
-Random forest classifier is an ensemble model, made up of many decision trees. The prediction from a random forest is found by taking the average from every tree in the forest. To make sure each tree is not exactly identical new data will be boostraped, or randomly generated in a way that is still very similar to the original set. 
+Random forest classifier is an ensemble model as it is made up of many decision trees. The prediction from a random forest is found by taking the average from every tree in the forest. To make sure each tree is not exactly identical new data will be boostraped, or randomly generated in a way that is still very similar to the original set. 
 
 **K-Nearest Neighbors Classifier**
 
@@ -241,7 +239,7 @@ K-nearest neighbors classifiers assigns the input to whatever group the majority
 
 ### Application and Validation
 
-Before running my data through the classifiers I standardized the *X* data so all of the values were on the same scale and no one variable dominated the model. I also turned my *y* data into a numpy array of integers so the models could classify the games as wins and losses properly. The below code shows this for the train and test data.
+Before running my data through the classifiers I standardized the *X* data so all of the values were on the same scale so no one variable dominated the model. I also turned my *y* data into a numpy array of integers so the models could classify the games as wins and losses properly. The below code shows this for the train and test data.
 
 ```
 scaler = StandardScaler()
@@ -255,9 +253,9 @@ ytest = np.array(ytest)
 ytest = ytest.astype('int')
 ```
 
-The validation techniques that I chose to use were accuracy scores and a confusion matrix. The accuracy score shows the what percentage of the data was accurately classified as a win or a loss. The confusion matrix shows the number of true positives or correctly identified 'win' data, true negatives or correctly identified 'loss' data, false positives or incorrectly identified 'win' data, and false negatives or incorrectly identified 'win' data. 
+The validation techniques that I chose to use were accuracy scores and a confusion matrix. The accuracy score shows the what percentage of the data was accurately classified as a win or a loss. The confusion matrix shows the number of true positives or correctly identified 'win' data, true negatives or correctly identified 'loss' data, false positives or incorrectly identified 'win' data, and false negatives or incorrectly identified 'win' data. Both of these validation techniques are needed as looking at just the accuracy statistic can be misleading, but looking at just a confusion matrix can be difficult to compare between models. 
 
-The first step in creating my model was running the train data through all four classification models I had chosen.  
+The first step in creating my models was running the train data through all four classification models I had chosen.  
 
 **Train Data**
 
@@ -326,7 +324,7 @@ The accuracy for the above model was 0.6658, and the confusion matrix is shown b
 
 The next step was to use the models from above and run the test data through them. 
 
-The first classifier model I ran was a logistic regression. The below code shows this implementation. 
+The below code shows the implementation or rerunning the logistic regression model seen above. 
 
 ```
 predicted_log = log_reg.predict(Xtestscaled)
@@ -339,7 +337,7 @@ The accuracy for the above model was 0.5900, and the confusion matrix is shown b
 
 <img width="138" alt="Screen Shot 2022-05-11 at 2 48 33 PM" src="https://user-images.githubusercontent.com/74326062/167923933-f33d465f-68c7-433d-b23f-affb91d93a78.png">
 
-The next classifier model I ran was a decision tree. The below code shows this implementation. 
+The below code shows the implementation or rerunning the decision tree model seen above. 
 
 ```
 predicted_dtr = dtc.predict(Xtestscaled)
@@ -352,7 +350,7 @@ The accuracy for the above model was 0.5406, and the confusion matrix is shown b
 
 <img width="138" alt="Screen Shot 2022-05-11 at 2 49 27 PM" src="https://user-images.githubusercontent.com/74326062/167924085-55e25fe3-2e55-44d6-8167-2d62d7f84b5e.png">
 
-The next classifier model I ran was a random forest. The below code shows this implementation. 
+The below code shows the implementation or rerunning the random forest model seen above. 
 
 ```
 predicted_rfc = rfc.predict(Xtestscaled)
@@ -365,7 +363,7 @@ The accuracy for the above model was 0.5434, and the confusion matrix is shown b
 
 <img width="138" alt="Screen Shot 2022-05-11 at 2 49 59 PM" src="https://user-images.githubusercontent.com/74326062/167924188-296f4b1b-3f2a-413c-be02-cd9100369920.png">
 
-The next classifier model I ran was a k-nearest neighbors. The below code shows this implementation. 
+The below code shows the implementation or rerunning the k-nearest neighbors model seen above. 
 
 ```
 predicted_knn = knn.predict(Xtestscaled)
